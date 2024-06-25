@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drama</title>
+    <link rel="icon" href="./Logo1.bmp">
+
+    <!-- link to css -->
+    <link rel="stylesheet" href="./HomeScreen.css">
+
+    <!-- link to bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- link bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- link fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- use embed style cuz external style not working -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(41, 40, 40);
+            color: white;
+        }
+
+        .accordion-button {
+            font-weight: 600;
+            background-color: #3a3939;
+            color: white !important;
+            background-color: transparent !important;
+        }
+
+        .accordion-item {
+            background-color: #3a3939;
+            border: none;
+        }
+
+        .accordion-body {
+            background-color: #3a3939;
+            color: white;
+            text-align: justify;
+        }
+
+        .accordion-body a {
+            color: white;
+        }
+
+        .form-control::placeholder {
+            color: rgb(194, 192, 192);
+        }
+
+        /* Custom styles for accordion button */
+        .accordion-button::after {
+            filter: invert(1);
+        }
+
+        /* respond */
+        @media (min-width: 1201px) {
+            .container-fluid {
+                width: 100%;
+                height: auto;
+                padding: 0;
+                color: white;
+                display: flex;
+            }
+
+            .container-fluid > .video-content {
+                width: 60%;
+                height: 89vh;
+                position: sticky;
+                top: 0;
+                z-index: 12000;
+                background-color: #232323;
+            }
+
+            .container-fluid > .video-content > video {
+                width: 100%;
+                height: 100%;
+                display: block;
+                align-items: start;
+
+            }
+
+            .container-fluid > .video-details {
+                width: 40%;
+                height: auto;
+                margin-top: 20px;
+                position: sticky;
+                top: 0;
+                z-index: 12000;
+            }
+
+            .container-fluid > .video-details > .title > p:first-child {
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 0px;
+            }
+
+            .container-fluid > .video-details > .title > p:nth-child(2) {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+
+            .container-fluid > .video-details > .accordion > p {
+                font-size: 15px;
+                color: rgba(211, 211, 211, 0.826);
+            }
+
+            .container-fluid > .video-details > .btn-ep > .btn {
+                width: 70px;
+                font-weight: 500;
+                color: white;
+                background-color: rgb(63, 63, 63);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .container-fluid {
+                width: 100%;
+                height: auto;
+                padding: 0;
+                color: white;
+            }
+
+            .container-fluid > .video-content {
+                width: 100%;
+                height: auto;
+            }
+
+            .container-fluid > .video-content > video {
+                width: 100%;
+                height: 100%;
+            }
+
+            .container-fluid > .video-details {
+                width: 100%;
+                height: auto;
+                margin-top: 20px;
+            }
+
+            .container-fluid > .video-details > .title > p:first-child {
+                font-size: 20px;
+                font-weight: 600;
+                margin-bottom: 0px;
+            }
+
+            .container-fluid > .video-details > .accordion > p {
+                color: rgba(211, 211, 211, 0.826);
+            }
+
+            .container-fluid > .video-details > .btn-ep > .btn {
+                width: 70px;
+                font-weight: 500;
+                color: white;
+                background-color: rgb(63, 63, 63);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="position: sticky; top: 0; z-index: 13000; background-color: #000000c9;">
+        <div class="container-fluid px-3">
+            <a class="navbar-brand d-flex align-items-center text-white" href="./Logo2.bmp">
+                <img class="me-3 rounded-3" width="50" src="./Logo2.bmp" alt="">
+                <h1>Drama</h1>
+            </a>
+            <div class="d-flex align-items-center">
+                <a class="nav-link text-white d-lg-none" href="#" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"><i class="bi bi-search me-2"></i></a>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header sticky-header border border-0 d-flex align-items-center">
+                                <div class="btn border border-0" data-bs-dismiss="modal"><i class="fa-solid fa-chevron-left fs-3 text-white"></i></div>
+                                <input onkeyup="Search()" id="search" type="search" class="form-control bg-dark text-white border border-0 border-bottom rounded-0 shadow-none" placeholder="Search...">
+                            </div>
+                            <div class="modal-body d-flex overflow-x-auto">
+                                <div class="btn bg-white text-dark rounded-pill px-3 py-1 me-2">All</div>
+                                <div class="btn bg-secondary text-white rounded-pill px-3 py-1 me-2">TVSeries</div>
+                                <div class="btn bg-secondary text-white rounded-pill px-3 py-1 me-2">Movie</div>
+                                <div class="btn bg-secondary text-white rounded-pill px-3 py-1 me-2">Anime</div>
+                                <div class="btn bg-secondary text-white rounded-pill px-3 py-1 me-2">Hollywood</div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="container p-0">
+                                    <div class="py-2 ms-2">
+                                        <h4>Popular Search</h4>
+                                    </div>
+                                    <div class="d-flex flex-wrap">
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./365.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">365 Days</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./love in the air.webp"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0  text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">Love in the Air</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./twinkling watermelon.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">Twinkling Watermelon</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./go east.webp"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">Go East</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./all of us are dead.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">All of Us Are Dead</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./queen of tear.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">Queen of Tears</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="navbar-toggler border border-0 shadow-none navbar-dark text-white" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item pe-3">
+                        <a class="nav-link text-white px-2" aria-current="page" href="./HomeScreen.html"><i
+                                class="bi bi-house me-2"></i>Home</a>
+                    </li>
+                    <li class="nav-item pe-3">
+                        <a class="nav-link text-white px-2" href="./Faq.html"><i class="bi bi-chat-right me-2"></i>FAQ</a>
+                    </li>
+                    <li class="nav-item pe-3">
+                        <a class="nav-link text-white px-2" href="#" id="open-popup"><i class="bi bi-chat-right-text me-2"></i>
+                            Request Drama</a>
+                        <div class="popup" id="popup">
+                            <button class="close-btn">&times;</button>
+                            <h2>Chat With Us</h2>
+                            <p>You can <a href="#">Request Drama</a> Or <a href="#">Report A Problem</a></p>
+                            <input type="text" value="https://t.kisskh.la/dhgB" readonly>
+                            <div class="social-buttons">
+                                <a href="#" class="facebook-btn">Facebook <i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" class="messenger-btn">Messenger <i class="fa-brands fa-facebook-messenger"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item pe-3">
+                        <a class="nav-link text-white px-2" href="#"><i class="bi bi-play-btn me-2"></i>Explore</a>
+                    </li>
+                    <li class="nav-item dropdown pe-3">
+                        <a class="nav-link dropdown-toggle text-white px-2" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-boxes me-2"></i>Categories
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark bg-black" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">K-Drama</a></li>
+                            <li><a class="dropdown-item" href="#">C-Drama</a></li>
+                            <li><a class="dropdown-item" href="#">J-Drama</a></li>
+                            <li><a class="dropdown-item" href="#">Hollywood</a></li>
+                            <li><a class="dropdown-item" href="#">Anime</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item d-none d-lg-block">
+                        <a class="nav-link text-white px-2" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search me-2"></i>Search</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="video-content">
+            <video controls>
+                <source src="./SOUND EFFECT - LOVE MOMENT.mp4">
+            </video>
+        </div>
+
+        <div class="video-details px-3 pb-4">
+            <div class="title">
+                <p>SOUND EFFECT - LOVE MOMENT</p>
+                <p>Apr 21, 2024</p>
+                <nav class="ms-4" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" aria-current="page">South Korea</li>
+                        <li class="breadcrumb-item" aria-current="page">Complete</li>
+                        <li class="breadcrumb-item" aria-current="page">Movie</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="actions d-flex justify-content-around">
+                <a href="#" class="link-light text-decoration-none fw-bold"><i
+                        class="bi bi-suit-heart me-2"></i>Favorite</a>
+                <a href="#" class="link-light text-decoration-none fw-bold"><i
+                        class="bi bi-share-fill me-2"></i>Share</a>
+                <a href="#" class="link-light text-decoration-none fw-bold"><i
+                        class="bi bi-cloud-slash me-2"></i>Download</a>
+                <a href="#" class="link-light text-decoration-none fw-bold"><i
+                        class="bi bi-exclamation-circle me-2"></i>Report</a>
+            </div>
+
+            <div class="accordion mt-4" id="accordionExample">
+                <p>Pop ads only have frequency of 1 pop per 1 hour.</p>
+                <div class="accordion-item">
+                    <h2 class="accordion-header text-white" id="headingOne">
+                        <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Description
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            On the day when Su Ying Ying, the daughter of the loyal Chief Minister Su of the Cabinet,
+                            was married to the second prince Xie Yu Heng, her family was massacred by Xie Yu Heng and
+                            his troops on the grounds of the Chief Minister Su's alleged treason. Xie Yu Heng thus
+                            ascended to the position of the crown prince. Three years later, Su Ying Ying returns to
+                            clear her father's name and uncover the truth behind the treason case. Teaming up with the
+                            seventh prince, Xie Yi An, she disguises herself as Xie Yi An's maid, Su Ying. Starting from
+                            the counterfeit banknote case, they discover its connection to Chief Minister Su and Xie Yu
+                            Heng, prompting them to go deeper into the investigation. From initially being at odds, they
+                            gradually develop feelings for each other. Despite the dangers, they work together to get
+                            close to the individuals involved in the counterfeit banknote case. As they gradually
+                            uncover the truth, they expose Xie Yu Heng's conspiracy to seize power and usurp the throne.
+                            It turns out that Xie Yu Heng is not of royal blood. In order to seize the royal power, he
+                            makes the counterfeit banknotes to amass wealth, bribe officials, and establish an
+                            assassination organization called the "Vermilion Bird Pavilion" to eliminate dissidents.
+                            Because Chief Minister Su discovered that Xie Yu Heng was the mastermind of the counterfeit
+                            banknote case before his death, Xie Yu Heng ordered his men to steal Su's official seal and
+                            fabricate documents framing Su for treason.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="episode mt-3">
+                <h2>Episode</h2>
+                <p>Total: 1</p>
+            </div>
+
+            <div class="btn-ep text-center px-2 flex-wrap">
+                <div class="btn m-2">1</div>
+                <div class="btn m-2">2</div>
+                <div class="btn m-2">3</div>
+                <div class="btn m-2">4</div>
+                <div class="btn m-2">5</div>
+                <div class="btn m-2">6</div>
+                <div class="btn m-2">7</div>
+                <div class="btn m-2">8</div>
+                <div class="btn m-2">9</div>
+                <div class="btn m-2">10</div>
+                <div class="btn m-2">11</div>
+                <div class="btn m-2">12</div>
+                <div class="btn m-2">13</div>
+                <div class="btn m-2">14</div>
+                <div class="btn m-2">15</div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="./HomeScreen.js"></script>
+</body>
+</html>

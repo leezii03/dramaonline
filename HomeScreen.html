@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Drama</title>
+    <link rel="icon" href="./Logo1.bmp">
+    <link rel="stylesheet" href="./HomeScreen.css">
+
+    <!-- link fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- link Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- link bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- link to sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- embed-style -->
+    <style>
+        .form-control::placeholder {
+            color: rgb(194, 192, 192);
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(41, 40, 40); color: white;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="position: sticky; top: 0; z-index: 13000; background-color: #000000c9;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center text-white" href="./Logo2.bmp">
+                <img class="me-3 rounded-3" width="50" src="./Logo2.bmp" alt="">
+                <h1>Drama</h1>
+            </a>
+            <div class="d-flex align-items-center">
+                <a class="nav-link text-white d-lg-none" href="#" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"><i class="bi bi-search me-2"></i></a>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header sticky-header border border-0 d-flex align-items-center">
+                                <div class="btn border border-0" data-bs-dismiss="modal"><i class="fa-solid fa-chevron-left fs-3 text-white"></i></div>
+                                <input onkeyup="Search()" id="search" type="search" class="form-control bg-dark text-white border border-0 border-bottom rounded-0 shadow-none" placeholder="Search...">
+                            </div>
+                            <div class="modal-body d-flex overflow-x-auto">
+                                <div class="btn bg-white text-dark rounded-pill px-3 py-1 me-2">All</div>
+                                <div class="btn bg-secondary text-white rounded-pill px-3 py-1 me-2">TVSeries</div>
+                                <div class="btn bg-secondary text-white rounded-pill px-3 py-1 me-2">Movie</div>
+                                <div class="btn bg-secondary text-white rounded-pill px-3 py-1 me-2">Anime</div>
+                                <div class="btn bg-secondary text-white rounded-pill px-3 py-1 me-2">Hollywood</div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="container p-0">
+                                    <div class="py-2 ms-2">
+                                        <h4>Popular Search</h4>
+                                    </div>
+                                    <div class="d-flex flex-wrap">
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./365.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">365 Days</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./love in the air.webp"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0  text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">Love in the Air</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./twinkling watermelon.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">Twinkling Watermelon</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./go east.webp"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">Go East</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./all of us are dead.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">All of Us Are Dead</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="movie col-6 col-lg-4 col-xl-3 mb-3 px-2">
+                                            <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                                                <div class="card overflow-hidden border border-0">
+                                                    <div class="card-body p-0">
+                                                        <img class="w-100"
+                                                            src="./queen of tear.jpg"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                                                        <p class="movie-title">Queen of Tears</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="navbar-toggler border border-0 shadow-none navbar-dark text-white" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item pe-3">
+                        <a class="nav-link text-white px-2" aria-current="page" href="./HomeScreen.html"><i
+                                class="bi bi-house me-2"></i>Home</a>
+                    </li>
+                    <li class="nav-item pe-3">
+                        <a class="nav-link text-white px-2" href="./Faq.html"><i class="bi bi-chat-right me-2"></i>FAQ</a>
+                    </li>
+                    <li class="nav-item pe-3">
+                        <a class="nav-link text-white px-2" href="#" id="open-popup"><i class="bi bi-chat-right-text me-2"></i>
+                            Request Drama</a>
+                        <div class="popup" id="popup">
+                            <button class="close-btn">&times;</button>
+                            <h2>Chat With Us</h2>
+                            <p>You can <a href="#">Request Drama</a> Or <a href="#">Report A Problem</a></p>
+                            <input type="text" value="https://t.kisskh.la/dhgB" readonly>
+                            <div class="social-buttons">
+                                <a href="#" class="facebook-btn">Facebook <i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" class="messenger-btn">Messenger <i class="fa-brands fa-facebook-messenger"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item pe-3">
+                        <a class="nav-link text-white px-2" href="#"><i class="bi bi-play-btn me-2"></i>Explore</a>
+                    </li>
+                    <li class="nav-item dropdown pe-3">
+                        <a class="nav-link dropdown-toggle text-white px-2" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-boxes me-2"></i>Categories
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark bg-black" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">K-Drama</a></li>
+                            <li><a class="dropdown-item" href="#">C-Drama</a></li>
+                            <li><a class="dropdown-item" href="#">J-Drama</a></li>
+                            <li><a class="dropdown-item" href="#">Hollywood</a></li>
+                            <li><a class="dropdown-item" href="#">Anime</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item d-none d-lg-block">
+                        <a class="nav-link text-white px-2" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-search me-2"></i>Search</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="./MovieDetail.html">
+                    <img src="./lovely runner.webp"
+                    class="d-block w-100" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="./MovieDetail.html">
+                    <img src="./joy of life.avif"
+                    class="d-block w-100" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="./MovieDetail.html">
+                    <img src="./the player2.webp"
+                    class="d-block w-100" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="./MovieDetail.html">
+                    <img src="./high-school-of-gangster.jpg"
+                    class="d-block w-100" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="./MovieDetail.html">
+                    <img src="./heirarchy.jpg"
+                    class="d-block w-100" alt="...">
+                </a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- section1 continue watching -->
+    <div class="container p-0 mt-3">
+        <div class="py-2 ms-2">
+            <h4>Continue watching</h4>
+        </div>
+
+        <div class="d-flex overflow-x-auto">
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0 shadow">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./lovely runner.webp"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Lovely Runner</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0 shadow">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./queen of tear.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Queen of Tears</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0 shadow">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./my demon.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>My Demon</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0 shadow">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./exhuma.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Exhuma</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="btn-next d-flex align-items-center justify-content-center" style="width: 100px;">
+                <a href="" class="d-flex justify-content-center align-items-center bg-danger rounded-circle text-decoration-none">
+                    <i class="icon fa-solid fa-chevron-right fs-6 text-white"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- section2 Top K-Drama -->
+    <div class="container p-0">
+        <div class="py-2 ms-2">
+            <h4>Top K-Drama <span><i class="fa-solid fa-chevron-right fs-6"></i></span></h4>
+        </div>
+
+        <div class="d-flex overflow-x-auto">
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./all of us are dead.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>All of Us Are Dead</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./marry my husband.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Marry My Husband</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./snowdrop.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Snowdrop</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./true beauty.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>True Beauty</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- section3 Top C-Drama -->
+    <div class="container p-0">
+        <div class="py-2 ms-2">
+            <h4>Top C-Drama <span><i class="fa-solid fa-chevron-right fs-6"></i></span></h4>
+        </div>
+
+        <div class="d-flex overflow-x-auto">
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./falling into your smile.webp"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Falling Into Your Smile</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./forever love.avif"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Forever Love</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./hidden love.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Hidden Love</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./only for love.avif"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Only For Love</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- section4 Hollywood -->
+    <div class="container p-0">
+        <div class="py-2 ms-2">
+            <h4>Hollywood <span><i class="fa-solid fa-chevron-right fs-6"></i></span></h4>
+        </div>
+
+        <div class="d-flex overflow-x-auto">
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./inside out2.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Inside Out 2</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./the boy4.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>The Boy-Season 4</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./under paris.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Under Paris</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./house of the dragon.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>House of the Dragon</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- section5 Anime -->
+    <div class="container p-0">
+        <div class="py-2 ms-2">
+            <h4>Anime <span><i class="fa-solid fa-chevron-right fs-6"></i></span></h4>
+        </div>
+
+        <div class="d-flex overflow-x-auto">
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./my hero academia.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>My Hero Academia</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./wind breaker.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Wind breaker</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="/MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./the dragon prince yuan.avif"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>The Dragon Prince Yuan</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./perfect world.webp"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Perfect World</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- section6 Upcoming -->
+    <div class="container p-0">
+        <div class="py-2 ms-2">
+            <h4>Upcoming <span><i class="fa-solid fa-chevron-right fs-6"></i></span></h4>
+        </div>
+
+        <div class="d-flex overflow-x-auto">
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./a beautiful lie.webp"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>A Beautiful Lie</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./blossom.avif"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Blossom</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./in between.jpg"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>In Between</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-5 col-md-4 col-lg-3 mb-3 px-2">
+                <a href="./MovieDetail.html" class="text-decoration-none link-dark">
+                    <div class="card overflow-hidden border border-0">
+                        <div class="card-body p-0">
+                            <img class="w-100"
+                                src="./go east.webp"
+                                alt="">
+                        </div>
+                        <div class="card-footer text-center fw-bolder border border-0 text-white" style="background-color: rgb(56, 54, 54);">
+                            <p>Go East</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Recommend</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Movies</a></li>
+                        <li><a href="#">TV Shows</a></li>
+                        <li><a href="#">Top Rated</a></li>
+                        <li><a href="#">Upcoming</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">Email: AsianLuvu@gmail.com</a></li>
+                        <li><a href="#">Phone: +855 112 233 44</a></li>
+                        <li><a href="#">Address: 369st, Seoul, Korea</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+   <script src="./HomeScreen.js"></script>
+
+</body>
+</html>
